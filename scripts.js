@@ -12,7 +12,16 @@ function getComputerChoice(){
 }
 
 function getHumanChoice(){
-    let humanChoice = prompt("Choose: Rock, Paper or Scissors").toLowerCase();
+    let humanChoice;
+    while (
+        (humanChoice !== "rock") &&
+        (humanChoice !== "paper") &&
+        (humanChoice !== "scissors")
+    ){
+        let input = prompt("Choose: Rock, Paper or Scissors");
+        humanChoice = input ? input.toLowerCase().trim() : "";
+    }
+    
     return humanChoice;
 }
 
@@ -36,7 +45,21 @@ function playRound(humanChoice, computerChoice){
     console.log(`Human: ${humanScore} X Computer: ${computerScore}`)
 }
 
-let humanSelection = getHumanChoice();
-let computerSelection = getComputerChoice();
+function playGame(){
+    alert("Rock, Papers or Scissors! Best of five!")
+    for (let rounds = 0; rounds < 5; rounds++){
+        let humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
+        playRound(humanSelection, computerSelection);
+    }
+    if (humanScore === computerScore){
+        console.log(`OMG! That's a Tie! \nHuman: ${humanScore} X Computer: ${computerScore}`)
+    }else if (humanScore > computerScore){
+        console.log(`You Won! Congratulations! \nHuman: ${humanScore} X Computer: ${computerScore}`)
+    }else{
+        console.log(`You Lose! :( \nHuman: ${humanScore} X Computer: ${computerScore}`)
+    }
+}
+
+playGame()
