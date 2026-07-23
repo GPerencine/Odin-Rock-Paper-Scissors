@@ -3,10 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock, Paper or Scissor game</title>
+    <title>Rock, Paper or Scissors game</title>
     <script src="scripts.js" defer></script>
 </head>
 <body>
     
+    <header>
+        <h1>Rock Paper Scissors</h1>
+    </header>
+    <main>
+        <section id="matchScores">
+            <div id="playerScore">
+                <h2>Player:</h2> 
+                <h2 id="playerScoreText">0</h2>
+            </div>
+            <div id="separator">
+                <h2>X</h2>
+            </div>
+            <div id="computerScore">
+                <h2>Computer:</h2> 
+                <h2 id="computerScoreText">0</h2> 
+            </div>
+        </section>
+        <section id="controls">
+            <button id="rock">Rock</button>
+            <button id="paper">Paper</button>
+            <button id="scissors">Scissors</button>
+        </section>
+        <section id="choices">
+            <div id="playerChoice">
+                <h3>Player:</h3> 
+                <h3 id="playerChoiceText">-</h3>
+            </div>
+            <div id="computerChoice">
+                <h3>Computer:</h3>
+                <h3 id="computerChoiceText">-</h3>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Copyright &copy <a href="https://github.com/GPerencine/Odin-Rock-Paper-Scissors" target="_blank">Gabriel Perencine</a> 2026</p>
+    </footer>
+
 </body>
 </html>
