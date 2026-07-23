@@ -1,18 +1,21 @@
-// Pontuação da partida
+// Match Score
 let humanScore = 0;
 let computerScore = 0;
 
-// Elementos da Interface (Placar)
+// Score Interface
 const playerScoreText = document.querySelector("#playerScoreText");
 const computerScoreText = document.querySelector("#computerScoreText");
 
-// Elementos da Interface (Escolhas)
+// Choice Interface
 const playerChoiceText = document.querySelector("#playerChoiceText");
 const computerChoiceText = document.querySelector("#computerChoiceText");
 
-// Containers dos Cards
+// Choice Cards
 const playerChoiceCard = document.querySelector("#playerChoice");
 const computerChoiceCard = document.querySelector("#computerChoice");
+
+// Buttons
+const buttons = document.querySelector("#buttons");
 
 function getComputerChoice(){
     let computerChoice = Math.floor(Math.random() * 3);
@@ -27,8 +30,6 @@ function getComputerChoice(){
     }
 }
 
-const buttons = document.querySelector("#buttons");
-
 buttons.addEventListener('click', (event) => {
     const target = event.target;
 
@@ -37,6 +38,9 @@ buttons.addEventListener('click', (event) => {
     const humanChoice = target.id;
 
     const computerChoice = getComputerChoice();
+
+    playerChoiceText.textContent = (humanChoice)
+    computerChoiceText.textContent = (computerChoice)
 
     playRound(humanChoice, computerChoice)
 });
