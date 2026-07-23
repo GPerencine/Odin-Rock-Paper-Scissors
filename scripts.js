@@ -1,3 +1,19 @@
+// Pontuação da partida
+let humanScore = 0;
+let computerScore = 0;
+
+// Elementos da Interface (Placar)
+const playerScoreText = document.querySelector("#playerScoreText");
+const computerScoreText = document.querySelector("#computerScoreText");
+
+// Elementos da Interface (Escolhas)
+const playerChoiceText = document.querySelector("#playerChoiceText");
+const computerChoiceText = document.querySelector("#computerChoiceText");
+
+// Containers dos Cards
+const playerChoiceCard = document.querySelector("#playerChoice");
+const computerChoiceCard = document.querySelector("#computerChoice");
+
 function getComputerChoice(){
     let computerChoice = Math.floor(Math.random() * 3);
 
@@ -11,22 +27,19 @@ function getComputerChoice(){
     }
 }
 
-function getHumanChoice(){
-    let humanChoice;
-    while (
-        (humanChoice !== "rock") &&
-        (humanChoice !== "paper") &&
-        (humanChoice !== "scissors")
-    ){
-        let input = prompt("Choose: Rock, Paper or Scissors");
-        humanChoice = input ? input.toLowerCase().trim() : "";
-    }
-    
-    return humanChoice;
-}
+const buttons = document.querySelector("#buttons");
 
-let humanScore = 0;
-let computerScore = 0;
+buttons.addEventListener('click', (event) => {
+    const target = event.target;
+
+    if (target.tagName !== 'BUTTON') return;
+    
+    const humanChoice = target.id;
+
+    const computerChoice = getComputerChoice();
+    
+    playRound(humanChoice, computerChoice)
+});
 
 function playRound(humanChoice, computerChoice){
     if(humanChoice === computerChoice){
@@ -49,7 +62,7 @@ function playGame(){
     alert("Rock, Papers or Scissors! Best of five!")
     for (let rounds = 0; rounds < 5; rounds++){
         let humanSelection = getHumanChoice();
-        let computerSelection = getComputerChoice();
+        
 
         playRound(humanSelection, computerSelection);
     }
@@ -61,5 +74,3 @@ function playGame(){
         console.log(`You Lose! :( \nHuman: ${humanScore} X Computer: ${computerScore}`)
     }
 }
-
-playGame()
