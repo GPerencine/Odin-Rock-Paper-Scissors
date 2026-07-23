@@ -37,11 +37,12 @@ buttons.addEventListener('click', (event) => {
     const humanChoice = target.id;
 
     const computerChoice = getComputerChoice();
-    
+
     playRound(humanChoice, computerChoice)
 });
 
 function playRound(humanChoice, computerChoice){
+    
     if(humanChoice === computerChoice){
         console.log(`You Tied! ${computerChoice} = ${humanChoice}`)
     }else if(
@@ -51,9 +52,11 @@ function playRound(humanChoice, computerChoice){
     ){
         console.log(`You Win! ${humanChoice} beats ${computerChoice}`)
         humanScore +=1;
+        playerScoreText.textContent = (humanScore)
     }else{
         console.log(`You Lose! ${computerChoice} beats ${humanChoice}`)
         computerScore +=1;
+        computerScoreText.textContent = (computerScore)
     }
     console.log(`Human: ${humanScore} X Computer: ${computerScore}`)
 }
@@ -74,3 +77,12 @@ function playGame(){
         console.log(`You Lose! :( \nHuman: ${humanScore} X Computer: ${computerScore}`)
     }
 }
+
+//playerScoreCard.classList.add("winner");
+//computerScoreCard.classList.add("loser");
+
+//playerScoreCard.classList.add("loser");
+//computerScoreCard.classList.add("winner");
+
+//const playerScoreCard = document.querySelector("#playerScore");
+//const computerScoreCard = document.querySelector("#computerScore");
