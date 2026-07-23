@@ -3,6 +3,8 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
+    background-color: white; 
+    color: black;
     min-height: 100vh;
 }
 
@@ -10,28 +12,63 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #1F2937;
+    color: white;
+    padding: 25px 0;
+    width: 100%;
 }
 
 main{
-    flex: 1 0 auto;
+    flex: 1;
+    padding: 20px 0;
 }
 
 #matchScore{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 120px;
-    
+    gap: 100px;
+    margin: 25px 0;
+    width: 100%;
 }
 #playerScore, #computerScore{
     text-align: center;
+    background-color: #E5E7EB;
+    border-radius: 16px;
+    padding: 30px;
 }
 
 #controls{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 60px;
+    flex-direction: column;
+    font-weight: bold;
+    width: 100%;
+}
+#controls p{
+    width: 100%;
+    text-align: center;
+}
+#buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+#controls button{
+    background-color: #3882F6;
+    color: white;
+    border: 2px solid black;
+    border-radius: 6px ;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;    
+    font-weight: bold;  
+}
+#controls button:hover{
+    background-color: #2563EB;
 }
 
 #choices{
@@ -39,11 +76,32 @@ main{
     justify-content: center;
     align-items: center;
     gap: 120px;
+    margin: 20px 0;
+    width: 100%;
 }
 #playerChoice, #computerChoice{
     text-align: center;
+    background-color: #E5E7EB;
+    border-radius: 16px;
+    padding: 30px;
 }
 
 footer{
     text-align: center;
+    background-color: #1F2937;
+    color: white;
+    padding: 15px 0;
+    margin-top: auto;
+    font-size: 14px;
+    width: 100%;
 }
+footer a{
+    color: white;
+}
+a img{
+    width: 25px;
+}
+
+.winner { color: #4ade80 !important; } 
+.loser  { color: #f87171 !important; } 
+.draw   { color: #facc15 !important; } 
