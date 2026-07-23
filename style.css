@@ -1,0 +1,49 @@
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main{
+    flex: 1 0 auto;
+}
+
+#matchScore{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 120px;
+    
+}
+#playerScore, #computerScore{
+    text-align: center;
+}
+
+#controls{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+
+#choices{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 120px;
+}
+#playerChoice, #computerChoice{
+    text-align: center;
+}
+
+footer{
+    text-align: center;
+}
