@@ -6,16 +6,20 @@ let computerScore = 0;
 const playerScoreText = document.querySelector("#playerScoreText");
 const computerScoreText = document.querySelector("#computerScoreText");
 
+const playerScoreCard = document.querySelector("#playerScore");
+const computerScoreCard = document.querySelector("#computerScore");
+
 // Choice Interface
 const playerChoiceText = document.querySelector("#playerChoiceText");
 const computerChoiceText = document.querySelector("#computerChoiceText");
 
-// Choice Cards
 const playerChoiceCard = document.querySelector("#playerChoice");
 const computerChoiceCard = document.querySelector("#computerChoice");
 
 // Buttons
 const buttons = document.querySelector("#buttons");
+
+alert("Rock, paper, scissors! First to five wins!")
 
 function getComputerChoice(){
     let computerChoice = Math.floor(Math.random() * 3);
@@ -34,6 +38,11 @@ buttons.addEventListener('click', (event) => {
     const target = event.target;
 
     if (target.tagName !== 'BUTTON') return;
+
+    if (humanScore >= 5 || computerScore >= 5){
+        endGame()
+        return;
+    } 
     
     const humanChoice = target.id;
 
@@ -48,45 +57,71 @@ buttons.addEventListener('click', (event) => {
 function playRound(humanChoice, computerChoice){
     
     if(humanChoice === computerChoice){
-        console.log(`You Tied! ${computerChoice} = ${humanChoice}`)
+        playerChoiceCard.classList.remove("winner", "loser", "draw");
+        computerChoiceCard.classList.remove("winner", "loser", "draw");
+        playerChoiceCard.classList.add("draw");
+        computerChoiceCard.classList.add("draw");
     }else if(
         (humanChoice === 'paper' && computerChoice === 'rock') ||
         (humanChoice === 'rock' && computerChoice === 'scissors') || 
         (humanChoice === 'scissors' && computerChoice === 'paper')                
     ){
-        console.log(`You Win! ${humanChoice} beats ${computerChoice}`)
         humanScore +=1;
         playerScoreText.textContent = (humanScore)
+
+        resetCard()
+        playerChoiceCard.classList.add("winner");
+        computerChoiceCard.classList.add("loser");
     }else{
-        console.log(`You Lose! ${computerChoice} beats ${humanChoice}`)
         computerScore +=1;
         computerScoreText.textContent = (computerScore)
+
+        resetCard()
+        playerChoiceCard.classList.add("loser");
+        computerChoiceCard.classList.add("winner");
     }
-    console.log(`Human: ${humanScore} X Computer: ${computerScore}`)
+    
+    if (computerScore >= 5 || humanScore >= 5){
+        endGame()
+    }
 }
 
-function playGame(){
-    alert("Rock, Papers or Scissors! Best of five!")
-    for (let rounds = 0; rounds < 5; rounds++){
-        let humanSelection = getHumanChoice();
-        
+function resetCard(){
+    playerChoiceCard.classList.remove("winner", "loser", "draw");
+    computerChoiceCard.classList.remove("winner", "loser", "draw");
+}
 
-        playRound(humanSelection, computerSelection);
-    }
-    if (humanScore === computerScore){
-        console.log(`OMG! That's a Tie! \nHuman: ${humanScore} X Computer: ${computerScore}`)
-    }else if (humanScore > computerScore){
-        console.log(`You Won! Congratulations! \nHuman: ${humanScore} X Computer: ${computerScore}`)
+function endGame(){
+    
+    if (humanScore > computerScore){
+        playerScoreCard.classList.add("winner");
+        computerScoreCard.classList.add("loser");
+        alert('You Won! Congratulations!')
     }else{
-        console.log(`You Lose! :( \nHuman: ${humanScore} X Computer: ${computerScore}`)
+        playerScoreCard.classList.add("loser");
+        computerScoreCard.classList.add("winner");
+        alert('You Lose! :(')
+    }
+
+    const playAgain = confirm('Do you want to play again?');
+    if (playAgain) {
+        resetGame();
     }
 }
 
-//playerScoreCard.classList.add("winner");
-//computerScoreCard.classList.add("loser");
+function resetGame(){
+    computerScore = 0
+    humanScore = 0
+    playerScoreText.textContent = computerScore;
+    computerScoreText.textContent = humanScore;
 
-//playerScoreCard.classList.add("loser");
-//computerScoreCard.classList.add("winner");
+    playerChoiceText.textContent = ('-')
+    computerChoiceText.textContent = ('-')
 
-//const playerScoreCard = document.querySelector("#playerScore");
-//const computerScoreCard = document.querySelector("#computerScore");
+    resetCard()
+
+    playerScoreCard.classList.remove("winner", "loser", "draw");
+    computerScoreCard.classList.remove("winner", "loser", "draw");
+
+    alert("Rock, paper, scissors! First to five wins!");
+}
